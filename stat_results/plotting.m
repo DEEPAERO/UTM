@@ -10,7 +10,7 @@ weight = [];
 xweight = [];
 multi = [];
 
-for i=0:1
+for i=0:19
     blind = [blind; load(sprintf('blind_reward-%i.txt',i))];
     weight = [weight; load(sprintf('weighted_reward-%i.txt',i))];
     xweight = [xweight; load(sprintf('crossweighted_reward-%i.txt',i))];
@@ -19,22 +19,27 @@ end
 
 
 %%
-stdb = std(blind)/NSAMPLES;
-stdw = std(weight)/NSAMPLES;
-stdx = std(xweight)/NSAMPLES;
-stdm = std(multi)/NSAMPLES;
+stdb = std(blind(:,1:10:100))/NSAMPLES;
+stdw = std(weight(:,1:10:100))/NSAMPLES;
+stdx = std(xweight(:,1:10:100))/NSAMPLES;
+stdm = std(multi(:,1:10:100))/NSAMPLES;
 
-blind = mean(blind);
-weight = mean(weight);
-xweight = mean(xweight);
-multi = mean(multi);
+m_blind = mean(blind);
+m_weight = mean(weight);
+m_xweight = mean(xweight);
+m_multi = mean(multi);
 
 hold on
-errorbar(blind, stdb,'b');
-errorbar(weight, stdw,'k');
-%errorbar(xweight, stdx, 'c');
-errorbar(multi, stdm, 'm');
+plot(m_blind,'b') ;
+plot(m_weight,'k') ;
+plot(m_xweight,'c') ;
+plot(m_multi,'m') ;
 
-%legend('blind','weighted','xweight','multi');
-legend('blind','weighted','multi');
+errorbar(1:10:100,m_blind(1:10:100), stdb,'b+');
+errorbar(1:10:100,m_weight(1:10:100), stdw,'k+');
+errorbar(1:10:100,m_xweight(1:10:100), stdx, 'c+');
+errorbar(1:10:100,m_multi(1:10:100), stdm, 'm+');
+
+legend('blind','weighted','xweight','multi');
+%legend('blind','weighted','multi');
 %axis([0 50 -12000 -9000])

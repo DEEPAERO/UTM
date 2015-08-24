@@ -63,9 +63,9 @@ std::string conflict_names[MultiagentTypeNE::TypeHandling::NMODES] = {
 	"stat_results/multimind_conflict-",
 };
 /**/
-int r=0;
+//int r=0;
 //int i=0;*/
-	//for (int r=0; r<5; r++){
+	for (int r=0; r<20; r++){
 		//printf("************* RUN %i STARTING ***********\n",r);
 //#pragma omp parallel for
 		for (int i=0; i<MultiagentTypeNE::NMODES; i++){
@@ -74,13 +74,13 @@ int r=0;
 			printf("mode type %i started. ", i);
 			program(r,MultiagentTypeNE::TypeHandling(i), rwd_names[i], conflict_names[i]);
 		}
-	//}
+	}
 }
 
 int main(int argc, char** argv)
 {
 	metaprog();
-	system("pause");
+//	system("pause");
 	return 0;
 }
 
