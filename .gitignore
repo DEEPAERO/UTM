@@ -1,5 +1,6 @@
 *.o
-UTMmain
+UTM/UTMmain
+UTMRAGS/UTMmainRAGS
 *.txt*
 *.csv*
 *~

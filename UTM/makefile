@@ -3,7 +3,7 @@ CC = g++ -std=c++11
 DEBUG = -g
 CFLAGS = -Wall -c $(DEBUG)
 LFLAGS = -Wall $(DEBUG)
-LIB = ../libraries
+LIB = ../../libraries
 DOMAINS =  $(LIB)/Domains
 FILEIO = $(LIB)/FileIO
 MATH = $(LIB)/Math

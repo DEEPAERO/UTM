@@ -10,7 +10,7 @@ weight = [];
 xweight = [];
 multi = [];
 
-for i=0:19
+for i=0:99
     blind = [blind; load(sprintf('blind_reward-%i.txt',i))];
     weight = [weight; load(sprintf('weighted_reward-%i.txt',i))];
     xweight = [xweight; load(sprintf('crossweighted_reward-%i.txt',i))];

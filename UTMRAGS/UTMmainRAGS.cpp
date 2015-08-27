@@ -20,8 +20,8 @@
 //#include "../nvwa-1.0/nvwa/debug_new.h"
 
 // Project-specific includes
-#include "../libraries/Simulation/SimTypeNE.h"
-#include "../libraries/Domains/ATFMSectorDomain/ATFMSectorDomain.h"
+#include "../../libraries/Simulation/SimTypeNE.h"
+#include "../../libraries/Domains/ATFMSectorDomain/ATFMSectorDomainRAGS.h"
 
 
 
@@ -65,7 +65,7 @@ std::string conflict_names[MultiagentTypeNE::TypeHandling::NMODES] = {
 /**/
 //int r=0;
 //int i=0;*/
-	for (int r=0; r<20; r++){
+	for (int r=0; r<100; r++){
 		//printf("************* RUN %i STARTING ***********\n",r);
 //#pragma omp parallel for
 		for (int i=0; i<MultiagentTypeNE::NMODES; i++){
