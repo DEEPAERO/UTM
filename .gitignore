@@ -2,6 +2,6 @@
 UTM/UTMmain
 UTMRAGS/UTMmainRAGS
 *.txt*
-*.csv*
+stat_results/*
 *~
 stat_results0*
