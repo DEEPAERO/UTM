@@ -3,6 +3,8 @@ UTM/UTMmain
 UTMRAGS/UTMmainRAGS
 UTMAstar/UTMmainAstar
 *.txt*
-*stat_results/*
+UTM/stat_results/*
+UTMRAGS/stat_results/*
+UTMAstar/stat_results/*
 *~
-*stat_results0*
+UTM/stat_results0*

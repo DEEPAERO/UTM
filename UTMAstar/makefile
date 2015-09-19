@@ -1,4 +1,4 @@
-OBJS = UTMmain.o SimTypeNE.o SimNE.o ISimulator.o IDomainStateful.o IMultiagentSystem.o IAgent.o easymath.o easyio.o MultiagentNE.o IMultiagentSystem.o NeuroEvo.o NeuralNet.o MultiagentTypeNE.o TypeNeuroEvo.o NeuroEvoTypeWeighted.o NeuroEvoTypeCrossweighted.o ATFMSectorDomain.o AStarManager.o UAV.o Sector.o Fix.o
+OBJS = UTMmainAstar.o SimTypeNE.o SimNE.o ISimulator.o IDomainStateful.o IMultiagentSystem.o IAgent.o easymath.o easyio.o MultiagentNE.o IMultiagentSystem.o NeuroEvo.o NeuralNet.o MultiagentTypeNE.o TypeNeuroEvo.o NeuroEvoTypeWeighted.o NeuroEvoTypeCrossweighted.o ATFMSectorDomainAstar.o RAGS.o 
 CC = g++ -std=c++11
 DEBUG = -g
 CFLAGS = -Wall -c $(DEBUG)
@@ -16,11 +16,11 @@ EASYIO = $(FILEIO)/easyio
 NN = $(SINGLE)/NeuralNet
 NE = $(SINGLE)/NeuroEvo
 
-UTMmain : $(OBJS)
-	$(CC) $(LFLAGS) $(OBJS) -o UTMmain
+UTMmainAstar : $(OBJS)
+	$(CC) $(LFLAGS) $(OBJS) -o UTMmainAstar
 
-UTMmain.o : UTMmain.cpp $(SIM)/SimTypeNE.h $(ATFM)/ATFMSectorDomain.h
-	$(CC) $(CFLAGS) UTMmain.cpp
+UTMmainAstar.o : UTMmainAstar.cpp $(SIM)/SimTypeNE.h $(ATFM)/ATFMSectorDomainAstar.h
+	$(CC) $(CFLAGS) UTMmainAstar.cpp
 
 SimTypeNE.o : $(SIM)/SimTypeNE.h $(SIM)/SimTypeNE.cpp $(SIM)/SimNE.h $(MULTI)/MultiagentTypeNE.h
 	$(CC) $(CFLAGS) $(SIM)/SimTypeNE.cpp
@@ -67,20 +67,11 @@ NeuroEvoTypeWeighted.o : $(NE)/NeuroEvoTypeWeighted.h $(NE)/NeuroEvoTypeWeighted
 NeuroEvoTypeCrossweighted.o : $(NE)/NeuroEvoTypeCrossweighted.h $(NE)/NeuroEvoTypeCrossweighted.cpp $(NE)/NeuroEvo.h $(NN)/TypeNeuralNet.h
 	$(CC) $(CFLAGS) $(NE)/NeuroEvoTypeCrossweighted.cpp
 
-ATFMSectorDomain.o : $(ATFM)/ATFMSectorDomain.h $(ATFM)/ATFMSectorDomain.cpp $(DOMAINS)/IDomainStateful.h $(MATH)/easymath.h $(EASYIO)/easyio.h $(PLAN)/AStarManager.h $(MATH)/Matrix.h $(ATFM)/UAV.h $(ATFM)/Sector.h $(ATFM)/Fix.h
-	$(CC) $(CFLAGS) $(ATFM)/ATFMSectorDomain.cpp
+ATFMSectorDomainAstar.o : $(ATFM)/ATFMSectorDomainAstar.h $(ATFM)/ATFMSectorDomainAstar.cpp $(DOMAINS)/IDomainStateful.h $(MATH)/easymath.h $(EASYIO)/easyio.h $(PLAN)/RAGS.h $(MATH)/Matrix.h
+	$(CC) $(CFLAGS) $(ATFM)/ATFMSectorDomainAstar.cpp
 
-AStarManager.o : $(PLAN)/AStarManager.h $(PLAN)/AStarManager.cpp $(PLAN)/AStar_easy.h $(PLAN)/AStar_grid.h $(MATH)/Matrix.h
-	$(CC) $(CFLAGS) $(PLAN)/AStarManager.cpp
-
-UAV.o : $(ATFM)/UAV.h $(ATFM)/UAV.cpp $(PLAN)/AStarManager.h $(MATH)/easymath.h $(MATH)/Matrix.h
-	$(CC) $(CFLAGS) $(ATFM)/UAV.cpp
-
-Sector.o : $(ATFM)/Sector.h $(ATFM)/Sector.cpp $(PLAN)/AStar_grid.h $(MATH)/Matrix.h
-	$(CC) $(CFLAGS) $(ATFM)/Sector.cpp
-
-Fix.o : $(ATFM)/Fix.h $(ATFM)/Fix.cpp $(ATFM)/UAV.h $(PLAN)/AStarManager.h
-	$(CC) $(CFLAGS) $(ATFM)/Fix.cpp
+RAGS.o : $(PLAN)/RAGS.h $(PLAN)/RAGS.cpp $(MATH)/easymath.h
+	$(CC) $(CFLAGS) $(PLAN)/RAGS.cpp
 
 clean:
 	\rm *.o *~ UTMmain
