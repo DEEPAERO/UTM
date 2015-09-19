@@ -1,6 +1,7 @@
 *.o
 UTM/UTMmain
 UTMRAGS/UTMmainRAGS
+UTMAstar/UTMmainAstar
 *.txt*
 stat_results/*
 *~
